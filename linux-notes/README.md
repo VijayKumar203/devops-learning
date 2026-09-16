@@ -59,7 +59,7 @@
 - Communication between computers happens over networks (e.g., the Internet)
 - Examples by role: Server (hosts applications), PC (browsing, media, banking), Mobile (calling, apps, social media), Smart devices (TV, AC)
 - Main components: CPU (processor), RAM, Storage, Operating System
-![IP](diagrams/ip.png)
+![IP](/diagrams/ip.png)
 
 # Linux
 - Linux is an open-source, free operating system
@@ -101,8 +101,8 @@
 - Generate SSH key on your computer: `ssh-keygen -f <keyname>`
 - Import the public key in AWS (EC2 Key Pairs -> Import key pair)
 - Connect to EC2: `ssh -i <your-key.pem> ec2-user@<EC2-IP>` (e.g., `ssh -i daws.pem ec2-user@3.38.12.159`)
-![SSH Keys](diagrams/ssh-keys.png)
-![User Key](diagrams/user-key.png)
+![SSH Keys](/diagrams/ssh-keys.png)
+![User Key](/diagrams/user-key.png)
 
 # Client-Server Architecture
 - Servers provide services; clients (browsers/apps) consume services
@@ -163,7 +163,7 @@
 - Undo: `u`; redo: `Ctrl+r`
 - Remove search highlight: `:nohl`
 - Find/replace example: `:%s/old/new/g` replaces all occurrences of "old" with "new"
-![Vim](diagrams/vim.png)
+![Vim](/diagrams/vim.png)
 
 # Download and Text Processing
 - `wget <url>`: download a file from the internet
@@ -255,7 +255,7 @@
 # DNS
 - DNS (Domain Name System) translates domain names to IP addresses
 - Example: Route 53 A record maps `yourdomain.me` to an Elastic IP
-![DNS](diagrams/dns.png)
+![DNS](/diagrams/dns.png)
 
 # Process Management
 - `ps -ef`: list all running processes
@@ -284,14 +284,14 @@
 - 2-Tier: splits roles (like a small hotel: owner issues token, cook cooks)
 - 3-Tier: separated roles (like a restaurant: captain, waiter, chef)
 - Software example: User (UI) -> Web Server (Frontend) -> Application Server (Backend) -> Database Server
-![3-Tier Architecture 1](diagrams/3-tier.png)
-![3-Tier Architecture 2](diagrams/3tier.png)
+![3-Tier Architecture 1](/diagrams/3-tier.png)
+![3-Tier Architecture 2](/diagrams/3-tier.png)
 
 # Database Tier
 - Databases store data (examples: MySQL, Oracle, PostgreSQL, MongoDB, Cassandra, Redis)
 - Messaging/Queue examples: ActiveMQ, Websphere MQ
 - The data storage layer of an application
-![Database](diagrams/database.png)
+![Database](/diagrams/database.png)
 
 # CRUD
 - CRUD = Create, Read, Update, Delete (basic operations in database)
