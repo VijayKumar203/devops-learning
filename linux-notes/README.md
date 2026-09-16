@@ -314,6 +314,20 @@ The application/backend layer handles business logic and **CRUD (Create, Read, U
 
 ![Database](/diagrams/database.png)
 
+# Application Tier
+The Application Tier is responsible for running the application logic and processing requests between the user interface and backend services.  
+In this setup, Node.js 20 is installed and configured to run the application.
+- `dnf module disable nodejs -y`  
+  Disables the default Node.js module stream available on the system.
+
+- `dnf module enable nodejs:20 -y`  
+  Enables Node.js version 20 for the application.
+
+- `dnf install nodejs -y`  
+  Installs Node.js and its required dependencies.
+
+> `dnf` is the newer package management tool that replaces `yum` on modern RHEL-based Linux distributions.
+
 # CRUD
 - CRUD = Create, Read, Update, Delete (basic operations in database)
 
