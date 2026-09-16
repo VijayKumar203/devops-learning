@@ -42,8 +42,7 @@
 - Feature: Product management
 - Activities: backlog management, bug fixes
 - Final product increment delivered
-
-# Signup Form
+- Signup Form
 - Enter your firstname
 - Enter your lastname
 - Defects: 2 found, 1 invalid
@@ -54,6 +53,7 @@
 - DevOps improves coordination between development, QA, and operations
 - Uses multiple tools: configuration management, CI/CD, monitoring, etc.
 
+- DevOps is the process developing, building, deploying and testing on the same day, that can improve co-ordination between all the teams. We use multiple DevOps tools to acheive this. Configuration management, CICD, etc.
 # What is computer?
 - Any IP-enabled device (server, PC, mobile, etc.) can be a computer
 - Communication between computers happens over networks (e.g., the Internet)
@@ -101,7 +101,6 @@
 - Generate SSH key on your computer: `ssh-keygen -f <keyname>`
 - Import the public key in AWS (EC2 Key Pairs -> Import key pair)
 - Connect to EC2: `ssh -i <your-key.pem> ec2-user@<EC2-IP>` (e.g., `ssh -i daws.pem ec2-user@3.38.12.159`)
-![SSH Keys](/diagrams/ssh-keys.png)
 ![User Key](/diagrams/user-key.png)
 
 # Client-Server Architecture
@@ -110,6 +109,7 @@
 - Linux server can be accessed by SSH clients (PuTTY, MobaXterm, Terminal, Git Bash, etc.)
 - Git Bash (on Windows) provides a mini-Linux shell and git client; starts in the user’s home directory
 - You can run basic Linux commands in Git Bash on Windows
+![SSH Keys](/diagrams/ssh-keys.png)
 
 # Security Groups (Firewall)
 - Security Groups act as virtual firewalls for EC2 instances
@@ -163,13 +163,12 @@
 - Undo: `u`; redo: `Ctrl+r`
 - Remove search highlight: `:nohl`
 - Find/replace example: `:%s/old/new/g` replaces all occurrences of "old" with "new"
-![Vim](/diagrams/vim.png)
-
-# Download and Text Processing
+-  Download and Text Processing
 - `wget <url>`: download a file from the internet
 - `curl <url>`: fetch content from a URL
 - Example: `echo "https://www.facebook.com/" \| cut -d "/" -f4` outputs "www.facebook.com"
 - `awk` example: `awk -F ":" '{print $1}' /etc/passwd` prints the first field (username) of each line in /etc/passwd
+![Vim](/diagrams/vim.png)
 
 # Logs
 - System logs are in `/var/log/`
@@ -284,8 +283,23 @@
 - 2-Tier: splits roles (like a small hotel: owner issues token, cook cooks)
 - 3-Tier: separated roles (like a restaurant: captain, waiter, chef)
 - Software example: User (UI) -> Web Server (Frontend) -> Application Server (Backend) -> Database Server
+![3-Tier Architecture 2](/diagrams/3tier.png)
+
+# Desktop vs Web-Based Applications
+
+## Desktop Applications
+Desktop applications are installed and run directly on a local computer. They generally consume more system resources and require installation, repair, and upgrades. They may occasionally hang, and data is stored locally, so there may be no recovery if the system crashes. They also cannot be accessed from everywhere and may have limited data security.
+
+## Web-Based Applications
+Web-based applications run through a web browser and can be accessed from anywhere. They provide high security and are accessible across different locations and devices.
+
+# Load Balancing
+Load Balancing distributes incoming traffic across multiple servers to improve application performance, availability, and scalability.
+**NGINX** acts as a web server/reverse proxy and distributes requests to backend application servers.
+The web layer uses **HTML, CSS, and JavaScript**, while the backend can use **Java, .NET, Python, C++, Golang, or Node.js**.
+The application/backend layer handles business logic and **CRUD (Create, Read, Update, Delete) operations**.
+
 ![3-Tier Architecture 1](/diagrams/3-tier.png)
-![3-Tier Architecture 2](/diagrams/3-tier.png)
 
 # Database Tier
 - Databases store data (examples: MySQL, Oracle, PostgreSQL, MongoDB, Cassandra, Redis)
