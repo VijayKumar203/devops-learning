@@ -59,6 +59,7 @@
 - Communication between computers happens over networks (e.g., the Internet)
 - Examples by role: Server (hosts applications), PC (browsing, media, banking), Mobile (calling, apps, social media), Smart devices (TV, AC)
 - Main components: CPU (processor), RAM, Storage, Operating System
+
 ![IP](/diagrams/ip.png)
 
 # Linux
@@ -101,6 +102,7 @@
 - Generate SSH key on your computer: `ssh-keygen -f <keyname>`
 - Import the public key in AWS (EC2 Key Pairs -> Import key pair)
 - Connect to EC2: `ssh -i <your-key.pem> ec2-user@<EC2-IP>` (e.g., `ssh -i daws.pem ec2-user@3.38.12.159`)
+
 ![User Key](/diagrams/user-key.png)
 
 # Client-Server Architecture
@@ -169,6 +171,7 @@
 - `curl <url>`: fetch content from a URL
 - Example: `echo "https://www.facebook.com/" \| cut -d "/" -f4` outputs "www.facebook.com"
 - `awk` example: `awk -F ":" '{print $1}' /etc/passwd` prints the first field (username) of each line in /etc/passwd
+
 ![Vim](/diagrams/vim.png)
 
 # Logs
@@ -255,6 +258,7 @@
 # DNS
 - DNS (Domain Name System) translates domain names to IP addresses
 - Example: Route 53 A record maps `yourdomain.me` to an Elastic IP
+
 ![DNS](/diagrams/dns.png)
 
 # Process Management
@@ -284,6 +288,7 @@
 - 2-Tier: splits roles (like a small hotel: owner issues token, cook cooks)
 - 3-Tier: separated roles (like a restaurant: captain, waiter, chef)
 - Software example: User (UI) -> Web Server (Frontend) -> Application Server (Backend) -> Database Server
+
 ![3-Tier Architecture 2](/diagrams/3tier.png)
 
 # Desktop vs Web-Based Applications
@@ -306,6 +311,7 @@ The application/backend layer handles business logic and **CRUD (Create, Read, U
 - Databases store data (examples: MySQL, Oracle, PostgreSQL, MongoDB, Cassandra, Redis)
 - Messaging/Queue examples: ActiveMQ, Websphere MQ
 - The data storage layer of an application
+
 ![Database](/diagrams/database.png)
 
 # CRUD
