@@ -109,6 +109,7 @@
 - Linux server can be accessed by SSH clients (PuTTY, MobaXterm, Terminal, Git Bash, etc.)
 - Git Bash (on Windows) provides a mini-Linux shell and git client; starts in the user’s home directory
 - You can run basic Linux commands in Git Bash on Windows
+
 ![SSH Keys](/diagrams/ssh-keys.png)
 
 # Security Groups (Firewall)
