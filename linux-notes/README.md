@@ -48,11 +48,12 @@
 - Defects: 2 found, 1 invalid
 
 # DevOps
+### DevOps is the process developing, building, deploying and testing on the same day, that can improve co-ordination between all the teams. We use multiple DevOps tools to acheive this. Configuration management, CICD, etc.
 - DevOps pipeline: Development -> Build/Release (DEV & SIT deploy) -> Testing
 - Ensure code developed by developer is tested and deployed on the same day
 - DevOps improves coordination between development, QA, and operations
 - Uses multiple tools: configuration management, CI/CD, monitoring, etc.
-## DevOps is the process developing, building, deploying and testing on the same day, that can improve co-ordination between all the teams. We use multiple DevOps tools to acheive this. Configuration management, CICD, etc.
+
 # What is computer ?
 - Any IP-enabled device (server, PC, mobile, etc.) can be a computer
 - Communication between computers happens over networks (e.g., the Internet)
