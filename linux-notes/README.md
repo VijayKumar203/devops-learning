@@ -198,6 +198,16 @@
 - `gpasswd -d <user> <group>`: remove user from a group
 - `groupdel <group>`: delete a group
 
+## Creating a User
+
+`useradd expense` → Creates a user named `expense`.
+
+## System Users / Service Accounts
+
+System users or service accounts are **non-human users** created for running system services or applications.
+
+A non-human user that does not have a password for interactive login is commonly referred to as a **system/service user**.
+
 # SSH Daemon
 - SSH server config file: `/etc/ssh/sshd_config`
 - `sshd -t`: test SSH configuration syntax
@@ -342,3 +352,10 @@ In this setup, Node.js 20 is installed and configured to run the application.
 - Amazon Linux = RHEL-based (fast updates on AWS)
 - Login to EC2 (Amazon Linux): `ssh ec2-user@<IP>` (for RHEL-based AMIs)
 
+# Wireless vs Wired
+
+## Wireless vs Wired
+
+Wired connections generally provide higher speed and more stable connectivity.
+
+Wireless connections generally provide lower speed compared to wired connections and may take more time for data transmission.
