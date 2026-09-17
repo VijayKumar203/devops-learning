@@ -359,3 +359,61 @@ In this setup, Node.js 20 is installed and configured to run the application.
 Wired connections generally provide higher speed and more stable connectivity.
 
 Wireless connections generally provide lower speed compared to wired connections and may take more time for data transmission.
+
+# Dependencies or Libraries
+
+Dependencies or libraries are required for an application to work properly. Developers mention the required dependencies and project information in the application's build/configuration files.
+
+**Node.js / JavaScript** → `package.json` → Contains project information and the dependencies required by the application. `package-lock.json` records the exact dependency versions installed.
+
+**TypeScript** → `package.json` → Contains project information and dependencies. `package-lock.json` records the exact installed dependency versions.
+
+**Java** → `pom.xml` → Maven configuration file that Contains project dependencies and build configuration.
+
+**Python** → `requirements.txt` → Contains the Python dependencies required by the application.
+
+**C# / .NET** → `.csproj` → Contains project information, dependencies, and build configuration. `.sln` is used to organize one or more .NET projects.
+
+**C / C++** → `CMakeLists.txt` → Common CMake configuration file used to define the build process and project dependencies.
+
+**Go** → `go.mod` → Defines the Go module and its required dependencies. `go.sum` stores checksums for dependency versions. `build.go` → Build-related file used for the Go project.
+
+**Ruby** → `Gemfile` → Contains the Ruby gems required by the application. `Gemfile.lock` records the exact versions installed.
+
+**PHP** → `composer.json` → Contains project information and PHP dependencies. `composer.lock` records the exact dependency versions.
+
+**Rust** → `Cargo.toml` → Contains project information and Rust dependencies. `Cargo.lock` records the exact dependency versions.
+
+**Kotlin** → `build.gradle` / `build.gradle.kts` → Used to define project dependencies and build configuration, commonly with Gradle.
+
+**Swift** → `Package.swift` → Defines a Swift package and its dependencies.
+
+**Scala** → `build.sbt` → SBT build file used to define project settings and dependencies.
+
+**Perl** → `cpanfile` → Commonly used to define Perl module dependencies.
+
+**Dart** → `pubspec.yaml` → Contains project information, dependencies, and package configuration.
+
+**R** → `DESCRIPTION` → Contains package information and dependencies for R packages.
+
+## Common Dependency Installation Commands
+
+`npm install` → Installs Node.js dependencies from `package.json`.
+
+`mvn install` → Builds a Maven project and installs the package into the local Maven repository.
+
+`pip install -r requirements.txt` → Installs Python dependencies listed in `requirements.txt`.
+
+`dotnet restore` → Restores .NET project dependencies.
+
+`go mod download` → Downloads Go module dependencies.
+
+`bundle install` → Installs Ruby dependencies listed in `Gemfile`.
+
+`composer install` → Installs PHP dependencies listed in `composer.json`.
+
+`cargo build` → Builds a Rust project and resolves its dependencies.
+
+`gradle build` → Builds a Gradle project and resolves its dependencies.
+
+`swift package resolve` → Resolves Swift package dependencies.
