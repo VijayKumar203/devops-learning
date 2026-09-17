@@ -198,11 +198,11 @@
 - `gpasswd -d <user> <group>`: remove user from a group
 - `groupdel <group>`: delete a group
 
-## Creating a User
+### Creating a User
 
 `useradd expense` → Creates a user named `expense`.
 
-## System Users / Service Accounts
+### System Users / Service Accounts
 
 System users or service accounts are **non-human users** created for running system services or applications.
 
