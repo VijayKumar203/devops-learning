@@ -83,6 +83,10 @@ Once all three layers are deployed, run these checks to confirm total system con
    ```bash
    telnet <DATABASE-PRIVATE-IP> 3306
    ```
+2. **Frontend to Backend:**
+    ```
+    telnet <BACKEND-PRIVATE-IP> 8080
+    ``` 
 
 ![User Key](/diagrams/3-tier-architecture.png)
 
