@@ -90,7 +90,7 @@ Once all three layers are deployed, run these checks to confirm total system con
 
 ![User Key](/diagrams/3-tier-architecture.png)
 
-## 🌐 Domain & DNS Setup Guide
+# 🌐 Domain & DNS Setup Guide
 
 Follow these steps to connect your custom domain (purchased from any registrar like GoDaddy, Namecheap, etc.) to AWS Route 53 (Hosted Zones):
 
@@ -111,4 +111,65 @@ Follow these steps to connect your custom domain (purchased from any registrar l
 3. Go back to your domain purchase platform, replace the default name servers with the **four AWS name servers** you just copied, and save your changes.
 
 > **Note:** DNS propagation can take anywhere from a few minutes up to 24 hours to take full effect globally.
+
+# AWS Route 53 DNS Record Setup
+
+1. Open the **AWS Console** and go to **Route 53**.
+2. Select **Hosted zones** from the left menu.
+3. Click on your **domain name**.
+4. Click **Create record**.
+5. For all records, use **Record type: A** and set the required **TTL**.
+
+## Database Server
+
+1. In **Record name**, enter the database name, for example:
+   `mysql`
+7. In **Value**, enter the **private IP address** of the database server.
+13. Keep **Record type: A** and the same **TTL**.
+8. Click **Create records**.
+9. Example: `mysql.example.com → 10.0.2.10`
+
+## Backend Server
+
+1.  Click **Create record** again. In **Record name**, enter the backend name:
+    `backend`
+12. In **Value**, enter the **private IP address** of the backend server.
+13. Keep **Record type: A** and the same **TTL**.
+14. Click **Create records**.
+15. Example: `backend.example.com → 10.0.1.20`
+
+## Frontend Server
+
+1.  Click **Create record** again. For the **root domain**, leave the **Record name** field empty.
+18. In **Value**, enter the **public IP address** of the frontend server.
+19. Keep **Record type: A** and the same **TTL**.
+20. Click **Create records**.
+21. Example: `example.com → 203.0.113.10`
+
+## Test the DNS Records
+
+After creating the records, test them from an environment that should be able to resolve them.
+### Test Database, Backend & Frontend
+```bash
+nslookup mysql.example.com
+nslookup backend.example.com
+nslookup example.com
+```
+or
+```bash
+dig mysql.example.com
+dig backend.example.com
+dig example.com
+```
+The result should return the configured private IP when queried from the appropriate VPC/private DNS environment.
+
+
+### Final Configuration
+
+1. **Database:** Name = `mysql` | IP = **Private IP**
+23. **Backend:** Name = `backend` | IP = **Private IP**
+24. **Frontend:** Name = **Blank** | IP = **Public IP**
+25. Use the database and backend private IPs for internal communication.
+26. Use the frontend public IP so the domain can be accessed from the internet.
+27. Replace all example IP addresses with your actual server IP addresses.
 
