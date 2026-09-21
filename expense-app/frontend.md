@@ -8,6 +8,12 @@ Developer has chosen Nginx as a web server and thus we will install Nginx Web Se
 
 ### Create EC2 instance in aws and copy the public IP address login to the server using MobaXterm rename as frontend server
 
+**Need root user to install the nginx server**
+
+```
+sudo su -
+```
+
 Install Nginx
 ```
 dnf install nginx -y 
@@ -102,4 +108,9 @@ To check whether frontend is up & running or not
 
 ```
 curl http://<FRONTEND-PUBLIC-IP>/health
+```
+
+To Check Domain Resolution
+```
+nslookup <own domain name> (Ex: nslookup vijaydev.me)
 ```

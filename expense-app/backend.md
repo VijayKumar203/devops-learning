@@ -161,3 +161,8 @@ To check whether backend is up & running or not
 ```
 curl http://localhost:8080/health
 ```
+
+To Check Domain Resolution
+```
+nslookup <own domain name> (Ex: nslookup backend.vijaydev.me)
+```
