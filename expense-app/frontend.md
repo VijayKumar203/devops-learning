@@ -112,5 +112,5 @@ curl http://<FRONTEND-PUBLIC-IP>/health
 
 To Check Domain Resolution
 ```
-nslookup <own domain name> (Ex: nslookup vijaydev.me)
+nslookup <own domain name> (Ex: nslookup frontend.vijaydev.me)
 ```

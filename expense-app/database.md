@@ -88,3 +88,8 @@ ps -ef | grep mysqld
 ```
 journalctl -u mysqld -f
 ```
+
+To Check Domain Resolution
+```
+nslookup <own domain name> (Ex: nslookup database.vijaydev.me)
+```
