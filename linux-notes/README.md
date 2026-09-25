@@ -293,14 +293,6 @@ A non-human user that does not have a password for interactive login is commonly
 - Reverse Proxy: intermediate for servers (Client -> Reverse Proxy -> Servers)
 - Nginx can act as a reverse proxy in front of backend servers
 
-# 3-Tier Architecture
-- 1-Tier (monolithic): all components on one server (like a roadside hotel doing everything)
-- 2-Tier: splits roles (like a small hotel: owner issues token, cook cooks)
-- 3-Tier: separated roles (like a restaurant: captain, waiter, chef)
-- Software example: User (UI) -> Web Server (Frontend) -> Application Server (Backend) -> Database Server
-
-![3-Tier Architecture 2](/diagrams/3tier.png)
-
 # Desktop vs Web-Based Applications
 
 ## Desktop Applications
@@ -308,6 +300,14 @@ Desktop applications are installed and run directly on a local computer. They ge
 
 ## Web-Based Applications
 Web-based applications run through a web browser and can be accessed from anywhere. They provide high security and are accessible across different locations and devices.
+
+# 3-Tier Architecture
+- 1-Tier (monolithic): all components on one server (like a roadside hotel doing everything)
+- 2-Tier: splits roles (like a small hotel: owner issues token, cook cooks)
+- 3-Tier: separated roles (like a restaurant: captain, waiter, chef)
+- Software example: User (UI) -> Web Server (Frontend) -> Application Server (Backend) -> Database Server
+
+![3-Tier Architecture 2](/diagrams/3tier.png)
 
 # Load Balancing
 Load Balancing distributes incoming traffic across multiple servers to improve application performance, availability, and scalability.
