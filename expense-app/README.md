@@ -173,3 +173,4 @@ The result should return the configured private IP when queried from the appropr
 26. Use the frontend public IP so the domain can be accessed from the internet.
 27. Replace all example IP addresses with your actual server IP addresses.
 
+# symlink

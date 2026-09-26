@@ -417,3 +417,4 @@ Dependencies or libraries are required for an application to work properly. Deve
 `gradle build` → Builds a Gradle project and resolves its dependencies.
 
 `swift package resolve` → Resolves Swift package dependencies.
+
