@@ -158,19 +158,25 @@
 - Open or create file: `vim <filename>`
 - Modes: Insert mode (type text) vs Command mode (execute commands)
 - Press `i` to insert text, `Esc` to return to command mode
-- Save & exit: `:wq`
-- Exit without saving: `:q!`
+- `:wq` : Save & Exit (or) write and quit
+- `:wq!`  : write and quit forcefully
+- `:q!` : Exit without saving
+- `:q`  : Just Quit
+- `:%d`  : To delete the entire content in the file
 - Show line numbers: `:set nu`; hide them: `:set nonu`
-- Search forward: `/word`; backward: `?word`
+- Search forward or Search from top : `/word`; backward or Search from Bottom : `?word`
 - Delete line: `dd`; copy (yank) line: `yy`; paste: `p`
 - Undo: `u`; redo: `Ctrl+r`
 - Remove search highlight: `:nohl`
 - Find/replace example: `:%s/old/new/g` replaces all occurrences of "old" with "new"
--  Download and Text Processing
-- `wget <url>`: download a file from the internet
-- `curl <url>`: fetch content from a URL
 - Example: `echo "https://www.facebook.com/" \| cut -d "/" -f4` outputs "www.facebook.com"
 - `awk` example: `awk -F ":" '{print $1}' /etc/passwd` prints the first field (username) of each line in /etc/passwd
+
+  **Download and Text Processing**
+- `wget <url>`: download files and contents from the internet
+- `curl <url>`: fetch content from a URL
+- `curl <options> <URL>` : (short for "Client URL") is a powerful command-line tool in Linux and other Unix-like operating systems used to transfer data to or from a remote server
+
 
 ![Vim](/diagrams/vim.png)
 
