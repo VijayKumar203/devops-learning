@@ -166,3 +166,4 @@ To Check Domain Resolution
 ```
 nslookup <own domain name> (Ex: nslookup backend.vijaydev.me)
 ```
+
