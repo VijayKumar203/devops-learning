@@ -99,7 +99,7 @@
 - Add Inbound rules: allow SSH (port 22) and any project-specific ports
 - Add Outbound rules: typically allow all traffic (0.0.0.0/0)
 - Example SSH rule: source 0.0.0.0/0 on port 22 (allows SSH from anywhere)
-- Generate SSH key on your computer: `ssh-keygen -f <keyname>`
+- Generate SSH key on your computer: `ssh-keygen -f <keyname>` It creates private key and public key
 - Import the public key in AWS (EC2 Key Pairs -> Import key pair)
 - Connect to EC2: `ssh -i <your-key.pem> ec2-user@<EC2-IP>` (e.g., `ssh -i daws.pem ec2-user@3.38.12.159`)
 
@@ -285,7 +285,8 @@ A non-human user that does not have a password for interactive login is commonly
 - `top`: interactive monitor (shows CPU/RAM usage)
 - Kill process: `kill <PID>` (graceful shutdown), `kill -9 <PID>` (force)
 
-# Network Monitoring
+# Network Management
+  **Network Monitoring**
 - `netstat -ltnp` or `ss -ltnp`: show listening TCP ports and associated PIDs
 - AWS handles physical networking; you configure security groups and firewalls on your EC2
 
@@ -315,7 +316,21 @@ Web-based applications run through a web browser and can be accessed from anywhe
 
 ![3-Tier Architecture 2](/diagrams/3tier.png)
 
+## Tight coupling
+Tight coupling is a software design state where two or more classes or modules are deeply dependent on each other's internal details and implementations.
+
+## Decoupling / Loose Coupling
+Designing application components so that they depend on each other as little as possible. If one component changes or fails, the other components should continue working independently.
+
+Example: In a 3-tier application, the Web Server, Application Server, and Database Server are separate. If the Web Server is changed, the Database Server does not need to be changed.
+
+**Simple example** :
+Frontend → Backend → Database
+
+Each layer has its own responsibility, which makes the application easier to maintain and modify.
+
 # Load Balancing
+
 Load Balancing distributes incoming traffic across multiple servers to improve application performance, availability, and scalability.
 **NGINX** acts as a web server/reverse proxy and distributes requests to backend application servers.
 The web layer uses **HTML, CSS, and JavaScript**, while the backend can use **Java, .NET, Python, C++, Golang, or Node.js**.
@@ -323,14 +338,21 @@ The application/backend layer handles business logic and **CRUD (Create, Read, U
 
 ![3-Tier Architecture 1](/diagrams/3-tier.png)
 
-# Database Tier
-- Databases store data (examples: MySQL, Oracle, PostgreSQL, MongoDB, Cassandra, Redis)
-- Messaging/Queue examples: ActiveMQ, Websphere MQ
-- The data storage layer of an application
+# Web/Frontend Server/Tier
 
-![Database](/diagrams/database.png)
+The Web/Frontend Tier is responsible for handling the user-facing part of the application. It contains the web application and provides the interface through which users interact with the application.
 
-# Application Tier
+**Web Server** → `Nginx` → Used to host the web application.
+
+**Frontend Technologies** → `HTML`, `CSS`, `JavaScript` → Used to develop the web application and user interface.
+
+**Load Balancer** → Distributes incoming user requests across the available servers and helps manage application traffic.
+
+**Web/Frontend Tier Flow** → `User → Load Balancer → Web Server → Application Server`
+
+
+# Application/Backend/Middleware Server/Tier
+
 The Application Tier is responsible for running the application logic and processing requests between the user interface and backend services.  
 
 In this setup, Node.js 20 is installed and configured to run the application.
@@ -342,6 +364,48 @@ In this setup, Node.js 20 is installed and configured to run the application.
   Installs Node.js and its required dependencies.
 
 > `dnf` is the newer package management tool that replaces `yum` on modern RHEL-based Linux distributions.
+
+# Database Server/Tier
+
+- A **Database Server** is a physical or virtual server where database server software is installed and used to store and manage application data.
+- Before using a database server, the required **database server software** must be installed.
+- Databases store data (examples: MySQL, Oracle, PostgreSQL, MongoDB, Cassandra, Redis)
+- Messaging/Queue examples: ActiveMQ, Websphere MQ
+- **RDBMS** → Relational Database Management System. In an RDBMS, data is stored in **tables**, and there is a relationship between different tables.
+- **Excel Example :** Excel stores data in **Rows and Columns** inside Sheets. **Common RDBMS :** MySQL, MSSQL, Oracle.
+
+### Database Connection Details
+
+To connect to a database server, we generally need:
+
+**IP Address** → Identifies the server.
+
+**Port** → Identifies the database service, for example MySQL uses `3306`.
+
+**Protocol** → Defines how the connection is made.
+
+**Username** → Identifies the database user.
+
+**Password / Key** → Used for authentication.
+
+### Database Structure
+
+The basic flow is:
+
+`Linux Server → Database Server Installation → Schema/Database → Tables → Data`
+
+**Linux Server** → The operating system/server where the database is installed.
+
+**Database Server Installation** → Install the required database software such as MySQL.
+
+**Schema / Database** → Logical container used to organize application data.
+
+**Tables** → Store data in rows and columns.
+
+**Data** → The actual information stored inside the tables.
+
+
+![Database](/diagrams/database.png)
 
 # CRUD
 - CRUD = Create, Read, Update, Delete (basic operations in database)
@@ -424,3 +488,26 @@ Dependencies or libraries are required for an application to work properly. Deve
 
 `swift package resolve` → Resolves Swift package dependencies.
 
+# Red Hat Family
+
+The Red Hat family includes Linux distributions related to the Red Hat ecosystem. The main difference to remember is **Open Source vs Enterprise**.
+
+## Open Source vs Enterprise
+
+**Open Source** → Free to use and community-driven. If there is a problem or defect, we depend on the community and may need to wait for a fix.
+
+**Enterprise** → Paid support is available. If there is a problem or defect, we can get support from the company.
+
+**Enterprise = Open Source + Support**
+
+## Red Hat
+
+**Red Hat = Kernel + Application Utilities + Support**
+
+## Red Hat Family Distributions
+
+The Red Hat ecosystem includes distributions such as:
+
+`Red Hat` → `CentOS` → `Fedora` → `AlmaLinux` → `Amazon Linux`
+
+**Remember:** These operating systems are related to the Red Hat Linux ecosystem, but they are **not exactly the same operating system**.
