@@ -351,7 +351,7 @@ The Web/Frontend Tier is responsible for handling the user-facing part of the ap
 **Web/Frontend Tier Flow** → `User → Load Balancer → Web Server → Application Server`
 
 
-# Application/Backend/Middleware Server/Tier
+# Application/Backend/Middleware  Server/Tier
 
 The Application Tier is responsible for running the application logic and processing requests between the user interface and backend services.  
 
@@ -368,7 +368,6 @@ In this setup, Node.js 20 is installed and configured to run the application.
 # Database Server/Tier
 
 - A **Database Server** is a physical or virtual server where database server software is installed and used to store and manage application data.
-- Before using a database server, the required **database server software** must be installed.
 - Databases store data (examples: MySQL, Oracle, PostgreSQL, MongoDB, Cassandra, Redis)
 - Messaging/Queue examples: ActiveMQ, Websphere MQ
 - **RDBMS** → Relational Database Management System. In an RDBMS, data is stored in **tables**, and there is a relationship between different tables.
@@ -404,11 +403,13 @@ The basic flow is:
 
 **Data** → The actual information stored inside the tables.
 
+<div align="center">
 
 ![Database](/diagrams/database.png)
+</div>
 
 # CRUD
-- CRUD = Create, Read, Update, Delete (basic operations in database)
+- CRUD = Create operation, Read operation, Update operation, Delete operation (basic operations in database)
 
 # AMI (Amazon Machine Image)
 - AMI: a template for launching EC2 instances (contains the OS and initial configuration)
@@ -424,7 +425,7 @@ The basic flow is:
 
 # Wireless vs Wired
 
-## Wireless vs Wired
+### Wireless vs Wired
 
 Wired connections generally provide higher speed and more stable connectivity.
 
@@ -494,17 +495,15 @@ The Red Hat family includes Linux distributions related to the Red Hat ecosystem
 
 ## Open Source vs Enterprise
 
-**Open Source** → Free to use and community-driven. If there is a problem or defect, we depend on the community and may need to wait for a fix.
+**Open Source** → Free to use and community-driven. If there is a problem or defect, we depend on the community & may need to wait for a fix.
 
 **Enterprise** → Paid support is available. If there is a problem or defect, we can get support from the company.
 
 **Enterprise = Open Source + Support**
 
-## Red Hat
-
 **Red Hat = Kernel + Application Utilities + Support**
 
-## Red Hat Family Distributions
+### Red Hat Family Distributions
 
 The Red Hat ecosystem includes distributions such as:
 
