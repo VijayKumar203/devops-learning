@@ -173,4 +173,260 @@ The result should return the configured private IP when queried from the appropr
 26. Use the frontend public IP so the domain can be accessed from the internet.
 27. Replace all example IP addresses with your actual server IP addresses.
 
-# symlink
+# Nginx, DNS, HTTP & Linux Notes
+
+## Nginx
+
+**Nginx** is a popular web server that can also work as a **reverse proxy** and **load balancer**.
+
+### Important Nginx Paths
+
+```text
+/usr/share/nginx/html
+    -> Default directory for frontend/static website files
+
+/etc/nginx
+    -> Main Nginx configuration directory
+
+/etc/nginx/default.d/expense.conf
+    -> Additional Nginx configuration file
+```
+
+### Basic Commands
+
+```bash
+systemctl start nginx
+```
+-> Starts the Nginx service.
+
+```bash
+systemctl enable nginx
+```
+-> Starts Nginx automatically when the server boots.
+
+```bash
+vim /etc/nginx/default.d/expense.conf
+```
+-> Opens the additional Nginx configuration file for editing.
+
+```bash
+nginx -t
+```
+-> Checks whether the Nginx configuration has errors.
+
+---
+
+# DNS
+
+**DNS (Domain Name System)** converts domain names into IP addresses.
+
+```text
+Human -> example.com
+Computer -> IP address
+```
+
+**DNS Resolver** -> Software that finds the IP address of a domain by querying DNS servers.
+
+**ICANN** -> Non-profit organization responsible for coordinating domain names and IP addresses.
+
+**TLD (Top-Level Domain)** -> Last part of a domain name, such as `.com`, `.org`, `.in`.
+
+---
+
+## DNS Record Types
+
+| Record | Purpose |
+|---|---|
+| `A` | Maps a domain to an IPv4 address |
+| `AAAA` | Maps a domain to an IPv6 address |
+| `CNAME` | Maps a domain to another domain name |
+| `MX` | Specifies mail servers |
+| `TXT` | Used for verification and other text-based information |
+| `NS` | Specifies the authoritative nameservers for the domain |
+| `SOA` | Contains important information about the DNS zone, such as the primary nameserver and zone details |
+
+### TTL
+
+**TTL (Time To Live)** -> Controls how long a DNS record is cached before it is queried again.
+
+```text
+High TTL -> Less DNS queries, useful for stable websites
+
+Low TTL  -> Faster DNS changes, useful during migrations
+```
+
+---
+
+# Nginx Uses
+
+Nginx can be used as:
+
+```text
+1. Web Server
+   -> Serves frontend/web files
+
+2. Reverse Proxy
+   -> Receives client requests and forwards them to backend servers
+
+3. Load Balancer
+   -> Distributes requests across multiple servers
+```
+
+---
+
+# Forward Proxy vs Reverse Proxy
+
+## Forward Proxy
+
+**Forward proxy** works on behalf of the **client**.
+
+```text
+Client -> Forward Proxy -> Internet
+```
+
+Uses:
+
+- Hides client identity
+- Access restrictions
+- Traffic filtering
+- Company internet control
+
+Example:
+
+```text
+Laptop -> Company Proxy -> Internet
+```
+
+The company proxy can block websites such as Facebook or Instagram.
+
+## Reverse Proxy
+
+**Reverse proxy** works on behalf of the **server**.
+
+```text
+Client -> Reverse Proxy -> Backend Server
+```
+
+Uses:
+
+- Hides backend server details
+- SSL/TLS termination
+- Caching
+- Load balancing
+
+---
+
+# HTTP Methods & Status Codes
+
+**HTTP methods** define what action should be performed on a resource.
+
+### Common Methods
+
+```text
+GET    -> Read data
+POST   -> Create/send data
+PUT    -> Update data
+PATCH  -> Partially update data
+DELETE -> Delete data
+TRACE  -> Diagnostic request
+CONNECT -> Establishes a tunnel
+```
+
+Example:
+
+```text
+GET /api/transactions
+    -> Read transactions
+
+POST /api/transactions
+    -> Create a transaction
+```
+
+Example request data:
+
+```json
+{
+  "amount": 100,
+  "desc": "snacks"
+}
+```
+
+---
+
+## HTTP Status Codes
+
+```text
+1XX -> Informational
+2xx -> Request successful
+3xx -> Redirection
+4xx -> Client-side error
+5xx -> Server-side error
+```
+
+### Common Codes
+
+```text
+100 -> Continue
+101 -> Switching Protocols
+
+200 -> OK / Request successful
+201 -> Resource created
+
+300 -> Multiple Choices
+301 -> Moved Permanently
+302 -> Found
+
+400 -> Bad Request
+401 -> Unauthorized
+402 -> Payment Required
+403 -> Forbidden
+404 -> Not Found
+
+500 -> Internal Server Error
+501 -> Not Implemented
+502 -> Bad Gateway
+503 -> Service Unavailable
+504 -> Gateway Timeout
+```
+
+---
+
+# Linux Inode, Symlink & Hard Link
+
+**Inode** -> A Linux filesystem structure that stores information about a file, such as permissions, owner, size, and disk location.
+
+## Symlink
+
+**Symlink (Soft Link)** -> A shortcut that points to another file or directory.
+
+```text
+Original file -> Symlink
+```
+
+- Symlink has a different inode.
+- Deleting the original file breaks the symlink.
+
+### Create Symlink
+
+```bash
+ln -s /path/to/original /path/to/link
+```
+
+-> Creates a symbolic link to the original file/directory.
+
+---
+
+## Hard Link
+
+**Hard link** -> Another name for the same file data.
+
+- Hard link and original file use the **same inode**.
+- Deleting one hard link does not remove the data while another hard link still exists.
+
+### Create Hard Link
+
+```bash
+ln /path/to/original /path/to/link
+```
+
+-> Creates a hard link to the same file.
