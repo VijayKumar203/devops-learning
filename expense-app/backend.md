@@ -89,7 +89,7 @@ SyslogIdentifier=backend
 WantedBy=multi-user.target
 ```
 
-**NOTE: Ensure you replace < MYSQL-SERVER-IPADDRESS > with database private IP address**
+ **NOTE: Ensure you replace `<MYSQL-SERVER-IPADDRESS>` with database private IP address**
 
 Load the service.
 
