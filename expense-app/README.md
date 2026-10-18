@@ -31,7 +31,7 @@ The application follows a standard decoupled 3-tier architecture:
 │  - Stores transactions and expense records             │
 └────────────────────────────────────────────────────────┘
 ```
-![User Key](/diagrams/3-tier-expense.png)
+![3 Tier Expense Overview](/diagrams/3-tier-expense.png)
 
 ---
 
@@ -88,7 +88,7 @@ Once all three layers are deployed, run these checks to confirm total system con
     telnet <BACKEND-PRIVATE-IP> 8080
     ``` 
 
-![User Key](/diagrams/3-tier-architecture.png)
+![3 Tier Architecture](/diagrams/3-tier-architecture.png)
 
 # 🌐 Domain & DNS Setup Guide
 
