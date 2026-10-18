@@ -1,0 +1,145 @@
+# 10-Payment 
+
+This service is responsible for payments in RoboShop e-commerce app.
+This service is written on `Python 3.x`, So need it to run this app.
+
+Developer has chosen Python, Check with developer which version of Python is needed.
+
+**Need root user to install the payment backend server**
+```
+sudo su -
+```
+
+Install Python 3
+
+```shell 
+dnf install python3 gcc python3-devel -y
+```
+
+Configure the application.
+
+Our application developed by the developer of our org and it is not having any RPM software just like other softwares. So we need to configure every step manually
+
+We already discussed in Linux basics section that applications should run as nonroot user.
+
+Add application User
+
+```shell 
+useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+```
+
+User **roboshop** is a function / daemon user to run the application. Apart from that we dont use this user to login to server.
+
+Also, username **roboshop** has been picked because it more suits to our project name.
+
+We keep application in one standard location. This is a usual practice that runs in the organization.
+
+Lets setup an app directory.
+
+```shell
+mkdir /app 
+```
+
+Download the application code to created app directory.
+
+```shell
+curl -L -o /tmp/payment.zip https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip 
+cd /app 
+unzip /tmp/payment.zip
+```
+
+Every application is developed by development team will have some common softwares that they use as libraries. This application also have the same way of defined dependencies in the application configuration.
+
+Lets download the dependencies.
+
+```shell 
+cd /app 
+pip3 install -r requirements.txt
+```
+
+We need to setup a new service in **systemd** so `systemctl` can manage this service
+
+We already discussed in linux basics that advantages of systemctl managing services, Hence we are taking that approach. Which is also a standard way in the OS.
+
+Setup SystemD Payment Service
+
+```unit file (systemd) title=/etc/systemd/system/payment.service
+[Unit]
+Description=Payment Service
+
+[Service]
+User=root
+WorkingDirectory=/app
+// highlight-start
+Environment=CART_HOST=<CART-SERVER-IPADDRESS>
+Environment=CART_PORT=8080
+Environment=USER_HOST=<USER-SERVER-IPADDRESS>
+Environment=USER_PORT=8080
+Environment=AMQP_HOST=<RABBITMQ-SERVER-IPADDRESS>
+// highlight-end
+Environment=AMQP_USER=roboshop
+Environment=AMQP_PASS=roboshop123
+
+ExecStart=/usr/local/bin/uwsgi --ini payment.ini
+ExecStop=/bin/kill -9 $MAINPID
+SyslogIdentifier=payment
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Hint! You can create file by using **`vim /etc/systemd/system/payment.service`**
+
+Load the service.
+
+```shell 
+systemctl daemon-reload
+```
+
+This above command is because we added a new service, We are telling systemd to reload so it will detect new service.
+
+Start the service.
+
+```shell 
+systemctl enable payment 
+systemctl start payment
+```
+
+## Troubleshooting steps for payment backend server
+
+To check the current operation state, health and log activity of nodejs server
+**Service Status**
+```
+systemctl status payment
+```
+To check the applications or services are on which ports
+**Active Port**
+```
+netstat -lntp
+```
+To check the process status
+**Process Status**
+```
+ps -ef | grep python
+```
+
+To check whether the backend and database is connected or not
+
+```
+telnet <IP> <port> (Ex: telnet backend.vijaydev.me 27017) database private IP address & database port number
+```
+
+To check whether backend is up & running or not
+
+```
+curl http://localhost:8080/health
+```
+
+```
+curl -v http://localhost:8080/health
+```
+
+To Check Domain Resolution
+```
+nslookup <own domain name> (Ex: nslookup backend.vijaydev.me)
+```
