@@ -10,3 +10,4 @@ echo "$PERSON2:: All good $PERSON1"
 # sh file_name
 # How to run this file
 # sh 01-practice.sh
+
