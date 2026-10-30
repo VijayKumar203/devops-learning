@@ -16,3 +16,5 @@
 
 ## How to create instances using shell script
 
+### How to get public and private IP address of instances
+
