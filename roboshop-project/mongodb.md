@@ -77,11 +77,6 @@ Restart the service to make the changes effected.
 systemctl restart mongod
 ```
 
-Use below commands to check data is loaded into mongodb or not Connect to MongoDB
-```
-mongosh --host MONGODB-SERVER-IPADDRESS
-```
-
 ## Troubleshooting steps for mongodb database server
 
 To check the current operation state, health and log activity of database server
